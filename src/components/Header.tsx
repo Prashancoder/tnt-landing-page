@@ -76,7 +76,7 @@ const Header = () => {
     href="tel:918750057070"
     className="text-black no-underline hover:text-black visited:text-black"
   >
-    Call Now 8088113333
+    Call Now
   </a>
 </Button>
 
@@ -131,7 +131,7 @@ const Header = () => {
     href="tel:918750057070"
     className="text-black no-underline hover:text-black visited:text-black"
   >
-    Call Now 8088113333
+    Call Now
   </a>
 </Button>
 
