@@ -64,7 +64,7 @@ const LeadForm = ({
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("https://tnt-leads-backend.onrender.com/api/leads", {
+      const res = await fetch("https://formspree.io/f/xyzrpyza", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, source: "website-landing" }),

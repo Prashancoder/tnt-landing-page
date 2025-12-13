@@ -11,7 +11,7 @@ const About = () => {
     {
       icon: Award,
       title: "Seasoned Professionals",
-      description: "T and T Realty brings a wealth of expertise to every client interaction with 20+ years of professional experience."
+      description: "T and T Realty brings a wealth of expertise to every client interaction with 11+ years of professional experience."
     },
     {
       icon: TrendingUp,
@@ -84,7 +84,7 @@ const About = () => {
             {/* Stats */}
             <div className="mt-10 grid grid-cols-2 gap-6">
               <div className="text-center p-6 bg-gradient-to-r from-yellow-100 to-yellow-200 rounded-xl shadow-sm">
-                <div className="text-3xl font-bold text-yellow-700">20+</div>
+                <div className="text-3xl font-bold text-yellow-700">11+</div>
                 <p className="text-sm text-gray-700 uppercase tracking-wide">Years Experience</p>
               </div>
               <div className="text-center p-6 bg-gradient-to-r from-yellow-100 to-yellow-200 rounded-xl shadow-sm">

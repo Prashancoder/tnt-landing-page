@@ -1,6 +1,6 @@
 // components/CompanySection.jsx
 import React from 'react';
-import companyImage from '@/assets/sco.jpeg';
+import companyImage from '@/assets/sco.jpg';
 
 const CompanySection = () => {
   const scrollToSection = (id) => {  // <- type annotation removed

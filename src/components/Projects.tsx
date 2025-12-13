@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import Project1 from '@/assets/1.jpeg';
-import Project2 from '@/assets/2.jpeg';
+import Project1 from '@/assets/11.jpg';
+import Project2 from '@/assets/22.jpg';
 import Project3 from '@/assets/3.jpeg';
 import Project4 from '@/assets/4.jpeg';
 
@@ -20,43 +20,23 @@ interface Project {
 const projects: Project[] = [
   { 
     id: 1, 
-    title: 'Residences', 
+    title: 'GIC  Manesar', 
     image: Project1, 
-    description: 'Modern residences with pool and landscaped garden.',
-    price: '₹2.75 Cr onwards',
-    location: 'Gurgaon, Sector 62',
-    size: '4BHK RESIDENCES',
-    status: 'Ready to Move'
+    description: 'The Next Big Growth Corridor',
+    price: '₹1.75 Cr onwards',
+    location: ' Manesar Gurgaon',
+    size: '2.5BHK RESIDENCES',
+    status: 'Under Construction' 
   },
   { 
     id: 2, 
-    title: 'Apartment', 
+    title: 'GIC  Manesar', 
     image: Project2, 
-    description: 'High-rise apartments in the city center with world-class amenities.',
-    price: '₹2.51 Cr onwards',
-    location: 'Noida, Sector 150',
-    size: '3BHK+ & 4BHK',
+    description: 'Gurgaon International City',
+    price: '₹1.75 Cr onwards',
+    location: ' M9, M10, M11 Manesar ,Gurgaon',
+    size: '1250 to 1300 Sq. Ft',
     status: 'Under Construction'
-  },
-  { 
-    id: 3, 
-    title: 'Rental Space', 
-    image: Project3, 
-    description: 'Premium commercial rental space designed for modern businesses.',
-    price: '₹60 LAKHS onwards',
-    location: 'Cyber City, Gurugram',
-    size: '2500 sq.ft',
-    status: 'Ready to Move'
-  },
-  { 
-    id: 4, 
-    title: 'Fully Furnished Apartments', 
-    image: Project4, 
-    description: 'Fully furnished apartments available in prime locations.',
-    price: '₹67.5 LAKHS onwards',
-    location: 'Sector-93, Gurgaon',
-    size: '1 BHK',
-    status: 'Available'
   },
 ];
 
