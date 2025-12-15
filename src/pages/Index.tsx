@@ -46,7 +46,7 @@ const Index = () => {
                         <CompanySection /> {/* ✅ Added here */}
 
       <Services />
-      <Associations />
+      {/* <Associations /> */}
             <WhyChoose />   {/* ✅ Yeh ab alag component aa gaya */}
 
       <LeadForm />

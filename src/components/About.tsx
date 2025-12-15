@@ -105,48 +105,7 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* ✅ 3. NEW SECTION: Our Service Areas */}
-        <motion.div
-           initial={{ opacity: 0, y: 50 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8 }}
-           viewport={{ once: true }}
-        >
-          <div className="text-center mb-10">
-            <h3 className="text-3xl font-bold mb-2">Our Service Areas</h3>
-            <p className="text-gray-600">Strategic focus on both B2B and B2C sectors</p>
-          </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {serviceAreas.map((service, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden group"
-              >
-                {/* Decorative background circle */}
-                <div className="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-yellow-50 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500"></div>
-
-                <div className="flex items-center gap-4 mb-6 relative z-10">
-                  <div className="p-4 bg-yellow-100 rounded-lg text-yellow-700">
-                    <service.icon className="w-8 h-8" />
-                  </div>
-                  <div>
-                    <h4 className="text-2xl font-bold text-gray-900">{service.title}</h4>
-                    <p className="text-sm text-yellow-600 font-semibold uppercase tracking-wider">{service.focus}</p>
-                  </div>
-                </div>
-
-                <p className="text-gray-700 leading-relaxed mb-6 relative z-10 border-l-4 border-yellow-400 pl-4">
-                  {service.description}
-                </p>
-
-                <p className="text-sm text-gray-500 italic relative z-10">
-                  "{service.footer}"
-                </p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
 
       </div>
     </section>
