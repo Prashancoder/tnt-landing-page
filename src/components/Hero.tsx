@@ -63,7 +63,7 @@ const Hero = () => {
               </h1>
 
               <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 max-w-2xl">
-                A self-sustained "City Within a City" featuring residential plots, villas, and commercial zones. 
+                A self-sustained "City With in a City" featuring residential plots, villas, and commercial zones. 
                 <br className="hidden md:block" /> 
                 <span className="text-lg mt-2 block">
                   Seamless connectivity to Delhi/NCR via NH-8 & Dwarka Expressway.
