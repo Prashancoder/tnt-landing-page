@@ -50,12 +50,7 @@ const Index = () => {
             <WhyChoose />   {/* ✅ Yeh ab alag component aa gaya */}
 
       <LeadForm />
-      {/* Transparent side sheet lead form */}
-      <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="right" className="w-full sm:max-w-md bg-background/20 backdrop-blur-md border-white/20">
-          <LeadForm variant="compact" transparent onSubmitted={() => setOpen(false)} />
-        </SheetContent>
-      </Sheet>
+
       <Footer />
 
 <a

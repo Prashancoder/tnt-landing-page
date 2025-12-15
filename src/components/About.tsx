@@ -1,32 +1,34 @@
 // src/components/About.tsx
-import { Card, CardContent } from '@/components/ui/card';
-import { TrendingUp, Building, Award, Shield } from 'lucide-react';
+import { Briefcase, Users, Award, TrendingUp, Building, Shield, CheckCircle2 } from 'lucide-react';
 import { motion } from "framer-motion";
 
 // ✅ Import your image
 import gurgaoImg from '@/assets/gurgao.webp';
 
 const About = () => {
-  const whyChoose = [
+
+  const highlights = [
+    "Incepted in Year 2014, we bring a proven track record and deep market expertise.",
+    "Specializing in a comprehensive range of services for buying, selling, and investing.",
+    "Crafting bespoke solutions tailored to every client's unique requirements.",
+    "T and T derives its name from 'Trust' and 'Transparency' in all transactions."
+  ];
+
+  // ✅ New Data for Service Areas
+  const serviceAreas = [
     {
-      icon: Award,
-      title: "Seasoned Professionals",
-      description: "T and T Realty brings a wealth of expertise to every client interaction with 11+ years of professional experience."
+      title: "B2B Services",
+      icon: Briefcase,
+      focus: "Land Acquisition & Project Planning",
+      description: "We specialize in land acquisition, project planning, and conceptualization. We facilitate the entire process from identifying suitable land to negotiating deals and securing necessary approvals.",
+      footer: "Our expertise facilitates a seamless journey from opportunity to ownership."
     },
     {
-      icon: TrendingUp,
-      title: "Market Knowledge",
-      description: "Our team possesses an intimate understanding of the Gurgaon real estate scene, staying ahead of trends and fluctuations."
-    },
-    {
-      icon: Building,
-      title: "Strategic Developer Collaborations",
-      description: "Our collaborations ensure clients gain access to the most coveted projects, amplifying investment potential."
-    },
-    {
-      icon: Shield,
-      title: "High Customer Satisfaction",
-      description: "Our consistently high customer satisfaction rate reflects our client-centric approach and exceptional service delivery."
+      title: "B2C Services",
+      icon: Users,
+      focus: "End-to-End Consumer Solutions",
+      description: "Our thrust lies on providing market insights, portfolio management, consumer engagement, financing options, and the sale process.",
+      footer: "We provide Turnkey end-to-end solutions to our esteemed clients from initial concept to tailored marketing and sales strategies."
     }
   ];
 
@@ -34,7 +36,7 @@ const About = () => {
     <section id="about" className="pt-24 pb-16 bg-background relative">
       <div className="container mx-auto px-6">
 
-        {/* Section Header */}
+        {/* 1. Header Section */}
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 40 }}
@@ -46,43 +48,34 @@ const About = () => {
             About <span className="bg-gradient-to-r from-yellow-500 to-secondary bg-clip-text text-transparent">T and T Realty</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-secondary mx-auto mb-6 rounded-full"></div>
-          <p className="text-lg md:text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed md:leading-relaxed font-light">
-            Reality Of Real Estate - T and T Realty Services Private Limited is a leading 
-            consultancy company incorporated in 2014 to drive Social and Economic Growth 
-            through <span className="font-semibold text-gray-900">REAL ESTATE</span>.
+          <p className="text-lg md:text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed font-light">
+            Reality Of Real Estate — Driving Social and Economic Growth through <span className="font-semibold text-gray-900">REAL ESTATE</span> since 2014.
           </p>
         </motion.div>
 
-        {/* Who We Are with Image */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
-          {/* Left Content */}
+        {/* 2. Who We Are Section */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           <motion.div 
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-3xl font-bold mb-6 tracking-wide">Who We Are</h3>
-            <p className="text-gray-800 mb-4 leading-relaxed md:leading-relaxed">
-              T and T Realty Services Pvt. Ltd. stands as a leading name in Real Estate 
-              Consulting across the Delhi NCR region. Incepted in Year 2014, with our 
-              proven track record, client-focused approach, and deep market expertise, 
-              we are the trusted partner for navigating the real estate landscape.
+            <h3 className="text-3xl font-bold mb-4 tracking-wide">Who We Are</h3>
+            <p className="text-gray-800 mb-6 text-lg leading-relaxed">
+              T and T Realty Services Private Limited stands as a leading name in Real Estate Consulting across the Delhi NCR region, acting as your trusted partner for navigating the landscape.
             </p>
-            <p className="text-gray-800 mb-4 leading-relaxed md:leading-relaxed">
-              At T and T Realty, we specialize in a comprehensive range of services for 
-              buying, selling, and investing in real estate. We are committed to building 
-              partnerships, adding values to our assets & providing strong returns to our 
-              investors and associates.
-            </p>
-            <p className="text-gray-800 leading-relaxed md:leading-relaxed">
-              T and T derives its name from the <strong className="text-gray-900 font-semibold">Trust</strong> of its stakeholders 
-              and <strong className="text-gray-900 font-semibold">Transparency</strong> in all transactions. The commitment to these 
-              principles ensures that we deliver reliable and effective results for our clients.
-            </p>
-
-            {/* Stats */}
-            <div className="mt-10 grid grid-cols-2 gap-6">
+            <ul className="space-y-4 mb-8">
+              {highlights.map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+                  <span className="text-gray-700 leading-relaxed text-[17px]">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 grid grid-cols-2 gap-6">
               <div className="text-center p-6 bg-gradient-to-r from-yellow-100 to-yellow-200 rounded-xl shadow-sm">
                 <div className="text-3xl font-bold text-yellow-700">11+</div>
                 <p className="text-sm text-gray-700 uppercase tracking-wide">Years Experience</p>
@@ -94,7 +87,6 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Right Image */}
           <motion.div 
             className="relative"
             initial={{ opacity: 0, x: 60 }}
@@ -106,12 +98,55 @@ const About = () => {
               <img 
                 src={gurgaoImg}
                 alt="About T and T Realty" 
-                className="w-full h-auto max-h-[400px] md:max-h-[350px] sm:max-h-[300px] object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-auto max-h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
             </div>
           </motion.div>
         </div>
+
+        {/* ✅ 3. NEW SECTION: Our Service Areas */}
+        <motion.div
+           initial={{ opacity: 0, y: 50 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.8 }}
+           viewport={{ once: true }}
+        >
+          <div className="text-center mb-10">
+            <h3 className="text-3xl font-bold mb-2">Our Service Areas</h3>
+            <p className="text-gray-600">Strategic focus on both B2B and B2C sectors</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {serviceAreas.map((service, index) => (
+              <div 
+                key={index} 
+                className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden group"
+              >
+                {/* Decorative background circle */}
+                <div className="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-yellow-50 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500"></div>
+
+                <div className="flex items-center gap-4 mb-6 relative z-10">
+                  <div className="p-4 bg-yellow-100 rounded-lg text-yellow-700">
+                    <service.icon className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-gray-900">{service.title}</h4>
+                    <p className="text-sm text-yellow-600 font-semibold uppercase tracking-wider">{service.focus}</p>
+                  </div>
+                </div>
+
+                <p className="text-gray-700 leading-relaxed mb-6 relative z-10 border-l-4 border-yellow-400 pl-4">
+                  {service.description}
+                </p>
+
+                <p className="text-sm text-gray-500 italic relative z-10">
+                  "{service.footer}"
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
       </div>
     </section>

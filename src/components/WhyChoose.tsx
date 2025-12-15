@@ -7,7 +7,7 @@ const whyChoose = [
   {
     icon: Award,
     title: "Seasoned Professionals",
-    description: "T and T Realty brings a wealth of expertise to every client interaction with 20+ years of professional experience."
+    description: "T and T Realty brings a wealth of expertise to every client interaction with 11+ years of professional experience."
   },
   {
     icon: TrendingUp,
