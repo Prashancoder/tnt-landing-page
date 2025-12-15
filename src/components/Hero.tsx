@@ -5,6 +5,9 @@ import heroBgMobile from '@/assets/qqq.jpeg';
 import LeadForm from '@/components/LeadForm';
 
 const Hero = () => {
+  // You might want to update these stats to reflect the GIC Project specifics later
+  // e.g., "Acres of Land", "Units Available", etc.
+  // For now, I kept the structure as is.
   const stats = [
     { id: 1, value: 2000, label: 'Happy Families', icon: <Users size={32} className="text-secondary" /> },
     { id: 2, value: 500, label: 'Properties Sold', icon: <Building size={32} className="text-secondary" /> },
@@ -19,7 +22,7 @@ const Hero = () => {
       return setInterval(() => {
         setCounts((prev) => {
           const newCounts = [...prev];
-          if (newCounts[index] < stat.value) {
+          if (newCounts[index] < stat.value) {    
             newCounts[index] += Math.ceil(stat.value / 100);
           }
           return newCounts;
@@ -55,13 +58,16 @@ const Hero = () => {
             {/* Left side content */}
             <div>
               <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-                Trusted Real Estate Consultants in{' '}
-                <span className="text-secondary">Gurgaon</span>
+                Gurgaon International City <br/>
+                <span className="text-secondary">(GIC) Manesar</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 max-w-2xl">
-                T and T Realty Services Private Ltd. <br /> Your trusted partner for premium
-                residential and commercial properties in Delhi NCR since 2014.
+                A self-sustained "City Within a City" featuring residential plots, villas, and commercial zones. 
+                <br className="hidden md:block" /> 
+                <span className="text-lg mt-2 block">
+                  Seamless connectivity to Delhi/NCR via NH-8 & Dwarka Expressway.
+                </span>
               </p>
 
               {/* Stats (Desktop Grid / Mobile Stack) */}
@@ -80,32 +86,26 @@ const Hero = () => {
 
             {/* Right side - Lead Form (desktop only) */}
             <div className="hidden md:flex justify-center md:justify-end">
-              <LeadForm variant="compact" transparent />
+              {/* Added a subtle wrapper text to encourage filling the form */}
+              <div className='w-full max-w-md'>
+                <p className="text-white text-center mb-4 font-semibold text-lg drop-shadow-md">
+                   Invest in the Future of Manesar
+                </p>
+                <LeadForm variant="compact" transparent />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-{/* Mobile Stats + Form Section */}
-<section className="block md:hidden bg-white py-10 px-4 text-center">
-  {/* Hide stats on mobile – removed this block */}
-  {/* <div className="space-y-6">
-    {stats.map((stat, index) => (
-      <div key={stat.id}>
-        <div className="flex items-center justify-center mb-2">{stat.icon}</div>
-        <div className="text-3xl font-bold text-gray-900">
-          {counts[index] >= stat.value ? stat.value + (stat.value > 10 ? '+' : '') : counts[index]}
+      {/* Mobile Stats + Form Section */}
+      <section className="block md:hidden bg-white py-10 px-4 text-center">
+        {/* Mobile Form Only */}
+        <div className="max-w-md mx-auto">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Enquire Now</h2>
+          <LeadForm variant="compact" />
         </div>
-        <div className="text-gray-600 text-sm">{stat.label}</div>
-      </div>
-    ))}
-  </div> */}
-
-  {/* Mobile Form Only */}
-  <div className="max-w-md mx-auto">
-    <LeadForm variant="compact" />
-  </div>
-</section>
+      </section>
     </>
   );
 };
