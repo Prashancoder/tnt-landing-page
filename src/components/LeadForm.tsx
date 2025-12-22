@@ -64,7 +64,7 @@ const LeadForm = ({
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("https://formspree.io/f/xyzrpyza", {
+      const res = await fetch("https://formspree.io/f/meorpana", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, source: "website-landing" }),
