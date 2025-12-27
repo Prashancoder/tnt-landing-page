@@ -48,7 +48,7 @@ const Projects = () => {
     }
   };
 
-  return (
+  return (  
     <section className="py-0 mt-0  bg-gray-50" id="projects">
       
 <div className="w-full py-1 mb-12 text-center">
