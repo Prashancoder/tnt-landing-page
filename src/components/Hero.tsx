@@ -40,10 +40,17 @@ const Hero = () => {
               </p>
               
               <div className="flex flex-wrap gap-4">
-                 <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold flex items-center transition-all">
-                    Get Details on WhatsApp
-                 </button>
-              </div>
+  <a
+    href="https://wa.me/919873092255"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold flex items-center transition-all"
+  >
+    Get Details on WhatsApp
+  </a>
+</div>
+
+
             </div>
 
             {/* Right side - Lead Form */}
