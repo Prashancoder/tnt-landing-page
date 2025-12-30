@@ -52,6 +52,7 @@ const LeadForm = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Basic Validation
     if (!formData.name.trim() || !formData.phone.trim()) {
       toast({
         title: "Required fields missing",
@@ -64,28 +65,41 @@ const LeadForm = ({
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("https://formspree.io/f/mykgnggp", {
+      // IQSetters CRM Integration
+      const response = await fetch("https://ttr171-api.iqsetter.com/crm/lead/create?authkey=2d74f12a781f433d934312fa0cf240fb", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, source: "website-landing" }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          connector_guid: "0643224ddd4046f7a87b5cb2927c1b6e",
+          first_name: formData.name,
+          last_name: "", // CRM requires this field, can be left empty
+          comment: formData.message,
+          mobile_number: formData.phone,
+          email_address: formData.email,
+          property_project_name: "T&T Realty Landing Page", // Added for source tracking
+        }),
       });
 
-      const data = await res.json();
-      console.log("API response:", data);
+      const result = await response.json();
 
-      toast({
-        title: "Thank you for your interest! 🎉",
-        description: "Our team will contact you within 24 hours.",
-      });
-
-      setFormData({ name: "", email: "", phone: "", message: "" });
-
-      if (onSubmitted) onSubmitted();
+      if (response.ok) {
+        toast({
+          title: "Thank you for your interest! 🎉",
+          description: "Our team will contact you within 24 hours.",
+        });
+        // Reset form on success
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        if (onSubmitted) onSubmitted();
+      } else {
+        throw new Error(result.response?.message || "Failed to submit");
+      }
     } catch (err) {
-      console.error("Error submitting form:", err);
+      console.error("CRM Submission Error:", err);
       toast({
         title: "Submission failed",
-        description: "Please try again or call us directly.",
+        description: "Something went wrong. Please try again or call us directly.",
         variant: "destructive",
       });
     } finally {
@@ -192,7 +206,6 @@ const LeadForm = ({
             </span>
             <div className="absolute inset-0 bg-white/20 blur-md opacity-30 animate-pulse"></div>
           </Button>
-
         </form>
       </CardContent>
     </Card>
