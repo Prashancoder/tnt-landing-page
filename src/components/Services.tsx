@@ -1,12 +1,16 @@
+// src/components/Services.tsx
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { 
   Home, 
   Building2, 
-  MapPin, 
-  CheckCircle,
+  CheckCircle2,
   ArrowRight,
-  Trees // Added Trees icon for the Land category (ensure you import this from lucide-react)
+  Trees,
+  Zap,
+  ShieldCheck,
+  Star,
+  Users2,
+  MessageSquare
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -15,74 +19,103 @@ const Services = () => {
     {
       icon: Building2,
       title: "Commercial Properties",
-      description: "Strategic commercial investments offering high returns and business growth opportunities.",
-      features: ["SCO Plots", "Retail Shops", "Office Spaces", "High Street Retail"]
+      tagline: "Strategic Investments",
+      description: "Data-backed commercial options from SCO plots to retail hubs in high-footfall areas.",
+      features: ["SCO Plots", "Retail Shops", "Office Spaces"],
+      color: "from-blue-600 to-indigo-600"
     },
     {
       icon: Home,
       title: "Residential Properties",
-      description: "Find your dream home with our wide range of premium residential options.",
-      features: ["Residential Plots", "Builder Floors", "Highrise Apartments", "Luxury Villas"]
+      tagline: "Premium Living",
+      description: "Handpicked premium homes, high-rise apartments and plots for the perfect lifestyle.",
+      features: ["Luxury Plots", "Builder Floors", "Apartments"],
+      color: "from-yellow-500 to-orange-500"
     },
     {
-      icon: Trees, // Using Trees icon for Land/Nature context (fallback to MapPin if Trees not available)
+      icon: Trees,
       title: "Land & Farmhouses",
-      description: "Exclusive land parcels and tranquil farmhouse locations for leisure and investment.",
-      features: ["Farm Houses", "Agricultural Farmland", "Holiday Homes", "Green Belts"]
+      tagline: "Future Assets",
+      description: "Exclusive agricultural land and tranquil farmhouse locations for leisure and growth.",
+      features: ["Farm Houses", "Agricultural Land", "Green Belts"],
+      color: "from-emerald-600 to-teal-600"
     }
   ];
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const companyStats = [
+    { label: "Years of Excellence", value: "11+", icon: Star },
+    { label: "Happy Families", value: "1000+", icon: Users2 },
+    { label: "Transparent Deals", value: "100%", icon: ShieldCheck },
+  ];
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="services" className="relative py-28 bg-[#fdfdfd] overflow-hidden">
+      
+      {/* Background Decor */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-slate-50/50 -skew-y-3 origin-top-right -z-0" />
 
-        {/* Services Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">
-            T and T Realty{' '}
-            <span className="bg-gradient-to-r from-yellow-500 to-secondary bg-clip-text text-transparent">
-              Services
-            </span>
-          </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive real estate solutions tailored to your investment goals and lifestyle needs
-          </p>
+      <div className="container mx-auto px-6 relative z-10">
+
+        {/* 1. Header Section with T and T Branding */}
+        <div className="flex flex-col lg:flex-row items-end justify-between gap-8 mb-20">
+          <div className="max-w-2xl text-left">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-2 text-yellow-600 font-bold tracking-widest uppercase text-xs mb-4"
+            >
+              <span className="w-8 h-[2px] bg-yellow-500" /> Professional Realty Services
+            </motion.div>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.1]">
+              Expertise by <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-500">T and T Realty</span>
+            </h2>
+            <p className="mt-6 text-gray-500 text-lg font-medium leading-relaxed">
+              Founded on the pillars of **Trust & Transparency**, we don't just sell properties; we build long-term wealth portfolios for our clients since 2014.
+            </p>
+          </div>
+          
+          <div className="hidden lg:flex gap-12 border-l border-gray-200 pl-12">
+            {companyStats.map((stat, i) => (
+              <div key={i} className="text-left">
+                <div className="flex items-center gap-2 text-yellow-600 mb-1">
+                  <stat.icon size={18} />
+                  <span className="text-2xl font-black text-slate-900">{stat.value}</span>
+                </div>
+                <p className="text-[10px] uppercase font-bold text-gray-400 tracking-widest">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Services Grid - Updated to grid-cols-3 to fit the 3 categories perfectly */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20 max-w-6xl mx-auto">
+        {/* 2. Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
-              <Card className="hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-2xl border border-gray-100 h-full flex flex-col">
-                <CardHeader className="text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-5 bg-gradient-to-tr from-primary to-secondary rounded-full shadow-lg">
-                      <service.icon size={32} className="text-white" />
-                    </div>
+              <Card className="h-full border-none shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.12)] transition-all duration-500 rounded-[2rem] overflow-hidden group bg-white">
+                <div className={`h-2 w-full bg-gradient-to-r ${service.color}`} />
+                <CardHeader className="pt-10">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <service.icon size={28} className="text-slate-800" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-800">{service.title}</CardTitle>
+                  <span className="text-[10px] font-bold text-yellow-600 uppercase tracking-widest">{service.tagline}</span>
+                  <CardTitle className="text-2xl font-bold text-slate-900 mt-1">{service.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="flex-grow flex flex-col justify-between">
-                  <div>
-                    <p className="text-gray-600 text-sm mb-6 text-center">{service.description}</p>
-                    <ul className="space-y-3">
-                      {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-3 text-sm text-gray-700 font-medium">
-                          <CheckCircle size={18} className="text-green-500 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                <CardContent>
+                  <p className="text-gray-500 text-sm mb-8 leading-relaxed">
+                    {service.description}
+                  </p>
+                  <div className="space-y-3">
+                    {service.features.map((f, i) => (
+                      <div key={i} className="flex items-center gap-3 text-sm font-semibold text-slate-700">
+                        <CheckCircle2 size={16} className="text-yellow-500" /> {f}
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
@@ -90,28 +123,64 @@ const Services = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
+        {/* 3. The "T and T Advantage" Section (Company Showcase) */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="p-10 md:p-16 rounded-3xl text-center text-black mb-20 shadow-xl bg-[radial-gradient(circle_at_center,_#FBE03F,_#F68C1E_80%)]"
+          className="bg-white border border-gray-100 rounded-[3rem] p-8 md:p-16 shadow-sm mb-24 overflow-hidden relative"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
         >
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Invest in Your Future?
-          </h3>
-          <p className="text-lg mb-6 max-w-2xl mx-auto">
-            Let our expert team guide you to the perfect property investment. 
-            Get personalized recommendations based on your budget and goals.
-          </p>
-          <Button 
-            size="lg"
-            onClick={scrollToContact}
-            className="bg-black text-white hover:bg-gray-800 font-semibold transition-all"
-          >
-            Request a Callback
-            <ArrowRight className="ml-2" size={20} />
-          </Button>
+          <div className="absolute top-0 right-0 p-10 opacity-[0.03] pointer-events-none">
+             <Zap size={300} />
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-3xl font-bold text-slate-900 mb-6">The T and T Realty Advantage</h3>
+              <p className="text-gray-500 mb-8 leading-relaxed">
+                Our name stands for <strong>Trust & Transparency</strong>. We specialize in end-to-end solutions, from land acquisition to project planning for B2B clients, and portfolio management for individual investors.
+              </p>
+              <ul className="grid sm:grid-cols-2 gap-4">
+                {["In-depth Market Research", "Clear Legal Documentation", "Proven Track Record", "Bespoke Solutions"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm font-bold text-slate-800">
+                    <div className="w-2 h-2 rounded-full bg-yellow-500" /> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-slate-50 p-8 rounded-[2rem] border border-gray-100">
+               <div className="italic text-lg text-slate-600 mb-6">
+                 "Our thrust lies in providing market insights and financing options that make ownership a seamless journey for every client."
+               </div>
+               <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-yellow-500" />
+                  <div>
+                    <div className="font-bold text-slate-900">T and T Services</div>
+                    <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">Since 2014</div>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* 4. CTA Section - WhatsApp Link instead of scroll */}
+        <motion.div 
+          className="rounded-[3rem] bg-slate-900 p-10 md:p-16 text-center relative overflow-hidden"
+          whileInView={{ scale: [0.98, 1] }}
+        >
+          <div className="absolute top-0 left-0 w-full h-full opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, gray 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+          
+          <div className="relative z-10">
+            <h3 className="text-3xl md:text-5xl font-black text-white mb-6">Experience Transparency Today</h3>
+            <p className="text-gray-400 max-w-xl mx-auto mb-10 text-lg">
+              Whether it's Commercial, Residential, or Land, let Panipat's most trusted consultant guide you.
+            </p>
+            <a 
+              href="https://wa.me/91XXXXXXXXXX?text=Hi, I am interested in T and T Realty Services. Please contact me." 
+              className="inline-flex h-16 px-12 bg-yellow-500 text-slate-900 hover:bg-white font-black text-lg rounded-2xl shadow-xl transition-all items-center gap-3 mx-auto"
+            >
+              <MessageSquare size={22} /> Talk to an Expert <ArrowRight size={22} />
+            </a>
+          </div>
         </motion.div>
 
       </div>
