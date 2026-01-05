@@ -63,24 +63,41 @@ const LeadForm = ({
 
     setIsSubmitting(true);
 
+    // CRM API Configuration
+    const CRM_URL = "https://ttr171-api.iqsetter.com/crm/lead/create?authkey=2d74f12a781f433d934312fa0cf240fb";
+    
+    // Mapping your local state to the CRM's required JSON format
+    const payload = {
+      connector_guid: "0643224ddd4046f7a87b5cb2927c1b6e",
+      first_name: formData.name, // Sending full name to first_name field
+      last_name: "",            // Leaving empty as per your current form structure
+      comment: formData.message,
+      mobile_number: formData.phone,
+      email_address: formData.email,
+      property_project_name: "Website Lead" // You can customize this
+    };
+
     try {
-      const res = await fetch("https://formspree.io/f/mykgnggp", {
+      const res = await fetch(CRM_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, source: "website-landing" }),
+        body: JSON.stringify(payload),
       });
 
       const data = await res.json();
-      console.log("API response:", data);
+      
+      // Checking for the specific success message in the response
+      if (res.ok || data.response?.message === "successfully created") {
+        toast({
+          title: "Thank you for your interest! 🎉",
+          description: "Our team will contact you within 24 hours.",
+        });
 
-      toast({
-        title: "Thank you for your interest! 🎉",
-        description: "Our team will contact you within 24 hours.",
-      });
-
-      setFormData({ name: "", email: "", phone: "", message: "" });
-
-      if (onSubmitted) onSubmitted();
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        if (onSubmitted) onSubmitted();
+      } else {
+        throw new Error("Server responded with an error");
+      }
     } catch (err) {
       console.error("Error submitting form:", err);
       toast({
@@ -180,7 +197,6 @@ const LeadForm = ({
             />
           </div>
 
-          {/* Submit Button */}
           <Button
             type="submit"
             disabled={isSubmitting}
@@ -192,7 +208,6 @@ const LeadForm = ({
             </span>
             <div className="absolute inset-0 bg-white/20 blur-md opacity-30 animate-pulse"></div>
           </Button>
-
         </form>
       </CardContent>
     </Card>
@@ -204,7 +219,6 @@ const LeadForm = ({
     <section id="contact" className="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          {/* Heading */}
           <div className="text-center mb-14">
             <h2 className="text-4xl md:text-5xl font-extrabold text-black">
               Ready to Find Your Dream Property?
@@ -216,7 +230,6 @@ const LeadForm = ({
           </div>
 
           <div className="grid md:grid-cols-2 gap-10">
-            {/* Left - Info */}
             <div className="space-y-6">
               <Card className="rounded-2xl shadow-lg bg-white/80 backdrop-blur-md border">
                 <CardHeader>
@@ -250,7 +263,6 @@ const LeadForm = ({
                 </CardContent>
               </Card>
 
-              {/* Why Choose Us */}
               <div className="p-6 rounded-2xl text-white shadow-lg" style={{ backgroundColor: "#00060eff" }}>
                 <h3 className="text-xl font-semibold mb-3">Why Choose T&T Realty?</h3>
                 <ul className="space-y-2 text-sm">
@@ -263,7 +275,6 @@ const LeadForm = ({
               </div>
             </div>
 
-            {/* Right - Form */}
             {FormCard}
           </div>
         </div>
