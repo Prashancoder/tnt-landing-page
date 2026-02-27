@@ -176,7 +176,7 @@ const LeadForm = ({
               type="email"
               value={formData.email}
               onChange={(e) => handleChange("email", e.target.value)}
-              placeholder="your@email.com"
+              placeholder="lavneetdabbas27@gmail.com"
               className="mt-2 rounded-lg"
             />
           </div>
