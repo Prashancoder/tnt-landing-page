@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="text-center max-w-3xl mx-auto space-y-6">
 
           <h3 className="text-2xl font-bold">
-            Lavneet Dabast Dabbas
+            Lavneet Dabas
           </h3>
 
           <p className="text-gray-400 text-sm leading-relaxed">
@@ -24,7 +24,7 @@ const Footer = () => {
 
             <div className="flex items-center gap-2">
               <Phone size={16} />
-              <span>70 3535 7070</span>
+              <span>9971809303</span>
             </div>
 
             <div className="flex items-center gap-2">
@@ -45,7 +45,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-10 pt-6 text-center text-xs text-gray-400 space-y-3">
 
           <div>
-            © {currentYear} | Lavneet Dabast Dabbas | All Rights Reserved.
+            © {currentYear} | Lavneet Dabas | All Rights Reserved.
           </div>
 
           <div className="flex justify-center gap-4">

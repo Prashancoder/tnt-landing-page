@@ -167,7 +167,7 @@ const Services = () => {
                   LD
                 </div>
                 <div>
-                  <div className="font-bold text-slate-900">Lavneet Dabast Dabbas</div>
+                  <div className="font-bold text-slate-900">Lavneet Dabas</div>
                   <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">
                     Independent Real Estate Consultant
                   </div>

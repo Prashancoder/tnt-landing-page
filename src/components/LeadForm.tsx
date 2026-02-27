@@ -57,29 +57,34 @@ const LeadForm = ({
 
     setIsSubmitting(true);
 
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      property_project_name: "Orchid IVY - Sector 51 Gurugram",
+    };
+
     try {
-      const res = await fetch("https://formspree.io/f/meorpana", {
+      const res = await fetch("http://localhost:5000/api/lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-          project: "Orchid IVY - Sector 51 Gurugram",
-        }),
+        body: JSON.stringify(payload),
       });
+
+      if (!res.ok) {
+        throw new Error(`Backend error: ${res.status}`);
+      }
 
       const data = await res.json();
 
-      if (res.ok) {
+      if (data?.success) {
         toast({
           title: "Thank you! 🎉",
           description:
-            "Your request has been submitted successfully. We will contact you shortly.",
+            "Your request has been received. Our team will contact you shortly.",
         });
 
         setFormData({
@@ -91,14 +96,14 @@ const LeadForm = ({
 
         if (onSubmitted) onSubmitted();
       } else {
-        throw new Error(data?.error || "Form submission failed");
+        throw new Error("Lead submission failed");
       }
     } catch (error) {
-      console.error("Form submission error:", error);
+      console.error("Lead submission error:", error);
 
       toast({
         title: "Submission failed",
-        description: "Please try again or call 70 3535 7070 directly.",
+        description: "Please try again or call9971809303 directly.",
         variant: "destructive",
       });
     } finally {
@@ -129,6 +134,7 @@ const LeadForm = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-5">
 
+          {/* Name */}
           <div>
             <Label className="flex items-center gap-2 font-semibold">
               <User size={16} />
@@ -144,6 +150,7 @@ const LeadForm = ({
             />
           </div>
 
+          {/* Phone */}
           <div>
             <Label className="flex items-center gap-2 font-semibold">
               <Phone size={16} />
@@ -159,6 +166,7 @@ const LeadForm = ({
             />
           </div>
 
+          {/* Email */}
           <div>
             <Label className="flex items-center gap-2 font-semibold">
               <Mail size={16} />
@@ -173,6 +181,7 @@ const LeadForm = ({
             />
           </div>
 
+          {/* Message */}
           <div>
             <Label className="flex items-center gap-2 font-semibold">
               <MessageSquare size={16} />

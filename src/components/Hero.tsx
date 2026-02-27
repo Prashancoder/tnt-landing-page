@@ -58,7 +58,7 @@ const Hero = () => {
                   href="tel:917035357070"
                   className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-bold transition-all"
                 >
-                  📞 Call Now – 70 3535 7070
+                  📞 Call Now –9971809303
                 </a>
 
                 <button
@@ -77,7 +77,7 @@ const Hero = () => {
               </p>
 
               <p className="mt-2 text-xs text-gray-400">
-                Curated by Lavneet Dabast Dabbas
+                Curated by Lavneet Dabas
               </p>
 
             </div>

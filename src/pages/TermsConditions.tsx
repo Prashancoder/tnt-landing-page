@@ -102,7 +102,7 @@ const TermsConditions = () => {
                 6. Limitation of Liability
               </h2>
               <p>
-                Lavneet Dabast Dabbas shall not be liable for any direct or indirect loss arising from
+                Lavneet Dabas shall not be liable for any direct or indirect loss arising from
                 reliance on the information provided on this website.
               </p>
               <p className="mt-4">
@@ -129,7 +129,7 @@ const TermsConditions = () => {
                 8. Marketing Disclaimer
               </h2>
               <p>
-                This website is managed by Lavneet Dabast Dabbas, an independent real estate consultant,
+                This website is managed by Lavneet Dabas, an independent real estate consultant,
                 for marketing and informational purposes only. We are not the developer of the project.
               </p>
             </section>
@@ -140,7 +140,7 @@ const TermsConditions = () => {
                 Contact Information
               </h2>
               <div className="bg-muted p-6 rounded-lg">
-                <p><strong>Lavneet Dabast Dabbas</strong></p>
+                <p><strong>Lavneet Dabas</strong></p>
                 <p>Independent Real Estate Consultant</p>
                 <p>Phone: 9971809303</p>
                 <p>Email: Lavneet Dabastdabbas27@gmail.com</p>

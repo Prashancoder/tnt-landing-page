@@ -24,7 +24,7 @@ const PrivacyPolicy = () => {
                 Introduction
               </h2>
               <p>
-                Lavneet Dabast Dabbas (“we”, “our”, “us”) values your privacy and is committed 
+                Lavneet Dabas (“we”, “our”, “us”) values your privacy and is committed 
                 to protecting your personal information. This Privacy Policy explains how 
                 we collect, use, and safeguard your data when you visit our website related 
                 to Orchid IVY, Sector 51, Gurugram.
@@ -108,7 +108,7 @@ const PrivacyPolicy = () => {
                 6. Project Disclaimer
               </h2>
               <p>
-                This website is maintained by Lavneet Dabast Dabbas for marketing and 
+                This website is maintained by Lavneet Dabas for marketing and 
                 informational purposes only. All property details including pricing, 
                 specifications, availability and offers are subject to change without notice.
               </p>
@@ -119,7 +119,7 @@ const PrivacyPolicy = () => {
                 7. Contact Information
               </h2>
               <div className="bg-muted p-6 rounded-lg">
-                <p><strong>Lavneet Dabast Dabbas</strong></p>
+                <p><strong>Lavneet Dabas</strong></p>
                 <p>Independent Real Estate Consultant</p>
                 <p>Orchid IVY, Sector 51, Gurugram</p>
                 <p>Phone: 9971809303</p>
