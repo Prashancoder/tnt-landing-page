@@ -99,7 +99,7 @@ const Projects = () => {
               </Button>
 
               <a
-                href="tel:917035357070"
+                href="tel:919971809303"
                 className="text-center bg-yellow-500 text-black py-4 text-lg font-bold rounded-xl hover:bg-yellow-400 transition-all duration-300"
               >
                 📞 Call Now – 9971809303
