@@ -11,13 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import {
-  Phone,
-  Mail,
-  User,
-  MessageSquare,
-  CheckCircle,
-} from "lucide-react";
+import { Phone, Mail, User, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface FormData {
@@ -55,7 +49,7 @@ const LeadForm = ({
     if (!formData.name.trim() || !formData.phone.trim()) {
       toast({
         title: "Required fields missing",
-        description: "Please enter your name and phone number",
+        description: "Please enter your name and phone number.",
         variant: "destructive",
       });
       return;
@@ -63,46 +57,48 @@ const LeadForm = ({
 
     setIsSubmitting(true);
 
-    // CRM API Configuration
-    const CRM_URL = "https://ttr171-api.iqsetter.com/crm/lead/create?authkey=2d74f12a781f433d934312fa0cf240fb";
-    
-    // Mapping your local state to the CRM's required JSON format
-    const payload = {
-      connector_guid: "0643224ddd4046f7a87b5cb2927c1b6e",
-      first_name: formData.name, // Sending full name to first_name field
-      last_name: "",            // Leaving empty as per your current form structure
-      comment: formData.message,
-      mobile_number: formData.phone,
-      email_address: formData.email,
-      property_project_name: "Website Lead" // You can customize this
-    };
-
     try {
-      const res = await fetch(CRM_URL, {
+      const res = await fetch("https://formspree.io/f/meorpana", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          project: "Orchid IVY - Sector 51 Gurugram",
+        }),
       });
 
       const data = await res.json();
-      
-      // Checking for the specific success message in the response
-      if (res.ok || data.response?.message === "successfully created") {
+
+      if (res.ok) {
         toast({
-          title: "Thank you for your interest! 🎉",
-          description: "Our team will contact you within 24 hours.",
+          title: "Thank you! 🎉",
+          description:
+            "Your request has been submitted successfully. We will contact you shortly.",
         });
 
-        setFormData({ name: "", email: "", phone: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+
         if (onSubmitted) onSubmitted();
       } else {
-        throw new Error("Server responded with an error");
+        throw new Error(data?.error || "Form submission failed");
       }
-    } catch (err) {
-      console.error("Error submitting form:", err);
+    } catch (error) {
+      console.error("Form submission error:", error);
+
       toast({
         title: "Submission failed",
-        description: "Please try again or call us directly.",
+        description: "Please try again or call 70 3535 7070 directly.",
         variant: "destructive",
       });
     } finally {
@@ -117,97 +113,88 @@ const LeadForm = ({
   const FormCard = (
     <Card
       className={cn(
-        "rounded-2xl shadow-xl border bg-white/80 backdrop-blur-xl transition hover:shadow-2xl",
+        "rounded-2xl shadow-xl border bg-white/90 backdrop-blur-xl transition hover:shadow-2xl",
         transparent ? "bg-background/50 border-white/20" : ""
       )}
     >
       <CardHeader>
-        <CardTitle className="text-2xl font-bold" style={{ color: "#000000" }}>
-          Request a Callback
+        <CardTitle className="text-2xl font-bold text-black">
+          Book Your Site Visit
         </CardTitle>
         <CardDescription className="text-base text-gray-600">
-          Fill out the form below and our team will reach out within 24 hours 🚀
+          Fill in your details to receive brochure, pricing & availability.
         </CardDescription>
       </CardHeader>
+
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Name */}
+
           <div>
-            <Label htmlFor="name" className="flex items-center gap-2 font-semibold">
+            <Label className="flex items-center gap-2 font-semibold">
               <User size={16} />
               Full Name *
             </Label>
             <Input
-              id="name"
               type="text"
               value={formData.name}
               onChange={(e) => handleChange("name", e.target.value)}
-              placeholder="John Doe"
+              placeholder="Enter your full name"
               required
-              className="mt-2 rounded-lg focus:ring-2 focus:ring-black/60 transition"
+              className="mt-2 rounded-lg"
             />
           </div>
 
-          {/* Email */}
           <div>
-            <Label htmlFor="email" className="flex items-center gap-2 font-semibold">
-              <Mail size={16} />
-              Email Address
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => handleChange("email", e.target.value)}
-              placeholder="your@email.com"
-              className="mt-2 rounded-lg focus:ring-2 focus:ring-black/60 transition"
-            />
-          </div>
-
-          {/* Phone */}
-          <div>
-            <Label htmlFor="phone" className="flex items-center gap-2 font-semibold">
+            <Label className="flex items-center gap-2 font-semibold">
               <Phone size={16} />
               Phone Number *
             </Label>
             <Input
-              id="phone"
               type="tel"
               value={formData.phone}
               onChange={(e) => handleChange("phone", e.target.value)}
               placeholder="+91 9876543210"
               required
-              className="mt-2 rounded-lg focus:ring-2 focus:ring-black/60 transition"
+              className="mt-2 rounded-lg"
             />
           </div>
 
-          {/* Message */}
           <div>
-            <Label htmlFor="message" className="flex items-center gap-2 font-semibold">
+            <Label className="flex items-center gap-2 font-semibold">
+              <Mail size={16} />
+              Email Address
+            </Label>
+            <Input
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleChange("email", e.target.value)}
+              placeholder="your@email.com"
+              className="mt-2 rounded-lg"
+            />
+          </div>
+
+          <div>
+            <Label className="flex items-center gap-2 font-semibold">
               <MessageSquare size={16} />
               Your Requirements
             </Label>
             <Textarea
-              id="message"
               value={formData.message}
               onChange={(e) => handleChange("message", e.target.value)}
-              placeholder="Budget, location preference, property type..."
-              rows={4}
-              className="mt-2 rounded-lg focus:ring-2 focus:ring-black/60 transition"
+              placeholder="Budget, preferred configuration..."
+              rows={3}
+              className="mt-2 rounded-lg"
             />
           </div>
 
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 text-lg font-semibold rounded-lg text-white hover:opacity-90 transition relative overflow-hidden"
-            style={{ backgroundColor: "#000000" }}
+            className="w-full py-3 text-lg font-semibold rounded-lg text-white bg-black hover:opacity-90"
           >
-            <span className="relative z-10">
-              {isSubmitting ? "Submitting..." : "✨ Send My Request"}
-            </span>
-            <div className="absolute inset-0 bg-white/20 blur-md opacity-30 animate-pulse"></div>
+            {isSubmitting ? "Submitting..." : "✨ Request Callback"}
           </Button>
+
         </form>
       </CardContent>
     </Card>
@@ -216,67 +203,20 @@ const LeadForm = ({
   if (variant === "compact") return FormCard;
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section id="contact" className="py-24 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-black">
-              Ready to Find Your Dream Property?
-            </h2>
-            <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
-              Get a free consultation with our expert team. Share your requirements
-              and let us help you find the perfect property investment.
-            </p>
-          </div>
+        <div className="max-w-4xl mx-auto text-center mb-12">
+          <h2 className="text-4xl font-bold text-black">
+            Schedule Your Site Visit
+          </h2>
+          <p className="text-gray-600 mt-4">
+            Connect with Lavneet Dabbas for premium independent floors in
+            Sector 51, Gurugram.
+          </p>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-10">
-            <div className="space-y-6">
-              <Card className="rounded-2xl shadow-lg bg-white/80 backdrop-blur-md border">
-                <CardHeader>
-                  <CardTitle className="text-2xl">📞 Get In Touch</CardTitle>
-                  <CardDescription>
-                    Contact our experienced team for personalized real estate solutions
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <Phone className="text-black" size={20} />
-                    <div>
-                      <div className="font-semibold">Call Us Now</div>
-                      <div className="text-gray-600">+91 8088113333</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Mail className="text-black" size={20} />
-                    <div>
-                      <div className="font-semibold">Email Us</div>
-                      <div className="text-gray-600">info@Lavneet Dabas.in</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="text-black mt-1" size={20} />
-                    <div>
-                      <div className="font-semibold">HARERA Registered</div>
-                      <div className="text-gray-600">Reg No: /Ext1/2023/222</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <div className="p-6 rounded-2xl text-white shadow-lg" style={{ backgroundColor: "#00060eff" }}>
-                <h3 className="text-xl font-semibold mb-3">Why Choose T&T Realty?</h3>
-                <ul className="space-y-2 text-sm">
-                  <li>✓ 10+ Years of Experience</li>
-                  <li>✓ 2000+ Satisfied Customers</li>
-                  <li>✓ HARERA Registered Company</li>
-                  <li>✓ End-to-end Property Solutions</li>
-                  <li>✓ Transparent Dealings</li>
-                </ul>
-              </div>
-            </div>
-
-            {FormCard}
-          </div>
+        <div className="max-w-md mx-auto">
+          {FormCard}
         </div>
       </div>
     </section>
