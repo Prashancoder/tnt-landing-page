@@ -250,7 +250,7 @@ const LeadForm = ({
                     <Mail className="text-black" size={20} />
                     <div>
                       <div className="font-semibold">Email Us</div>
-                      <div className="text-gray-600">info@tandtrealty.in</div>
+                      <div className="text-gray-600">info@Lavneet Dabas.in</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

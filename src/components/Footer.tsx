@@ -1,145 +1,71 @@
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import tntLogo from '@/assets/logo1.png';
+import { Phone, Mail } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <footer className="bg-[#000000] text-white font-sans">
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-10">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <img src={tntLogo} alt="T&T Realty" className="h-20 w-auto" />
-            <p className="text-sm leading-relaxed text-gray-300">
-              Leading real estate consultancy in Delhi NCR since 2014. 
-              Your trusted partner for premium properties and investments.
-            </p>
-            <div className="space-y-2 text-sm text-gray-300">
-              <div className="flex items-center gap-2">
-                <Phone size={16} />
-                <span>+91 8088113333</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail size={16} />
-                <span>info@tandtrealty.in</span>
-              </div>
-            </div>
-          </div>
+    <footer className="bg-black text-white font-sans">
+      <div className="container mx-auto px-6 py-12">
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4 border-b border-white/20 pb-2">Quick Links</h4>
-            <ul className="space-y-2">
-              {['home', 'about', 'services', 'contact'].map((section) => (
-                <li key={section}>
-                  <button 
-                    onClick={() => scrollToSection(section)}
-                    className="hover:text-[#A8D5BA] transition-colors"
-                  >
-                    {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Main Footer Content */}
+        <div className="text-center max-w-3xl mx-auto space-y-6">
 
-          {/* Property Types */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4 border-b border-white/20 pb-2">Property Types</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li>Residential Properties</li>
-              <li>Commercial Properties</li>
-              <li>Retail Shops</li>
-              <li>SCO Plots</li>
-            </ul>
-          </div>
+          <h3 className="text-2xl font-bold">
+            Lavneet Dabast Dabbas
+          </h3>
+
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Independent Real Estate Consultant marketing 
+            Orchid IVY, Sector 51, Gurugram.
+          </p>
 
           {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4 border-b border-white/20 pb-2">Visit Our Office</h4>
-            <div className="flex items-start gap-2 text-sm text-gray-300 mb-3">
-              <MapPin size={16} className="mt-1" />
-              <div>
-                2nd Floor, Ameya One,<br />
-                Golf Course Road, Sector 42,<br />
-                Gurgaon, Haryana 122022
-              </div>
-            </div>
-            <div className="text-sm text-gray-300 mb-4">HARERA No: /Ext1/2023/222</div>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-gray-300 text-sm">
 
-            {/* Social Links */}
-            <div className="flex gap-3 mt-2">
-              <a
-                href="https://www.linkedin.com/company/tntrealtyin/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button size="sm" variant="ghost" className="hover:bg-white/10 p-2 rounded-full">
-                  <Linkedin size={16} />
-                </Button>
-              </a>
-              <a
-                href="https://www.youtube.com/c/TandTRealty"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button size="sm" variant="ghost" className="hover:bg-white/10 p-2 rounded-full">
-                  <Youtube size={16} />
-                </Button>
-              </a>
-              <a
-                href="https://x.com/tntrealtyin"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button size="sm" variant="ghost" className="hover:bg-white/10 p-2 rounded-full">
-                  <Twitter size={16} />
-                </Button>
-              </a>
-              <a
-                href="https://www.facebook.com/tntrealtyin"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button size="sm" variant="ghost" className="hover:bg-white/10 p-2 rounded-full">
-                  <Facebook size={16} />
-                </Button>
-              </a>
-              <a
-                href="https://www.instagram.com/tntrealtyin/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button size="sm" variant="ghost" className="hover:bg-white/10 p-2 rounded-full">
-                  <Instagram size={16} />
-                </Button>
-              </a>
+            <div className="flex items-center gap-2">
+              <Phone size={16} />
+              <span>70 3535 7070</span>
             </div>
+
+            <div className="flex items-center gap-2">
+              <Mail size={16} />
+              <span>your@email.com</span>
+            </div>
+
           </div>
+
+          {/* RERA Placeholder */}
+          <div className="text-gray-500 text-xs">
+            RERA No: ________
+          </div>
+
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/20 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+        <div className="border-t border-white/20 mt-10 pt-6 text-center text-xs text-gray-400 space-y-3">
+
           <div>
-            © {currentYear} | T&T REALTY | All Rights Reserved.
+            © {currentYear} | Lavneet Dabast Dabbas | All Rights Reserved.
           </div>
-          <div className="flex gap-4 mt-3 md:mt-0">
-            <a href="/privacy-policy" className="hover:text-[#A8D5BA] transition-colors">
+
+          <div className="flex justify-center gap-4">
+            <a href="/privacy-policy" className="hover:text-gray-200">
               Privacy Policy
             </a>
-            <span className="opacity-50">|</span>
-            <a href="/terms-conditions" className="hover:text-[#A8D5BA] transition-colors">
+            <span className="opacity-40">|</span>
+            <a href="/terms-conditions" className="hover:text-gray-200">
               Terms & Conditions
             </a>
           </div>
+
+          {/* Mandatory Legal Disclaimer */}
+          <div className="max-w-2xl mx-auto text-gray-500 leading-relaxed">
+            This website is for informational purposes only and does not constitute 
+            an offer to sell. Prices and availability are subject to change without notice.
+          </div>
+
         </div>
+
       </div>
     </footer>
   );

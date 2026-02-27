@@ -18,34 +18,37 @@ const Services = () => {
   const services = [
     {
       icon: Building2,
-      title: "Commercial Properties",
-      tagline: "Strategic Investments",
-      description: "Data-backed commercial options from SCO plots to retail hubs in high-footfall areas.",
-      features: ["SCO Plots", "Retail Shops", "Office Spaces"],
-      color: "from-blue-600 to-indigo-600"
+      title: "Premium Independent Floors",
+      tagline: "3 & 4 BHK + Study",
+      description:
+        "Spacious, well-planned independent floors with dedicated servant room, basement & exclusive terrace space.",
+      features: ["Low-density living", "Premium finishes", "Modern architecture"],
+      color: "from-yellow-500 to-orange-500",
     },
     {
       icon: Home,
-      title: "Residential Properties",
-      tagline: "Premium Living",
-      description: "Handpicked premium homes, high-rise apartments and plots for the perfect lifestyle.",
-      features: ["Luxury Plots", "Builder Floors", "Apartments"],
-      color: "from-yellow-500 to-orange-500"
+      title: "Prime Sector 51 Location",
+      tagline: "Fully Developed Habitat",
+      description:
+        "Live in a mature, fully developed micro-market with top healthcare, schools, business hubs and upcoming metro.",
+      features: ["3 km to Medanta", "500 m to Amity", "3 km to Unitech Cyber Park"],
+      color: "from-blue-600 to-indigo-600",
     },
     {
       icon: Trees,
-      title: "Land & Farmhouses",
-      tagline: "Future Assets",
-      description: "Exclusive agricultural land and tranquil farmhouse locations for leisure and growth.",
-      features: ["Farm Houses", "Agricultural Land", "Green Belts"],
-      color: "from-emerald-600 to-teal-600"
-    }
+      title: "Investment & Rental Potential",
+      tagline: "Appreciation + Income",
+      description:
+        "Independent floors in a core Gurugram location with strong capital appreciation and rental demand.",
+      features: ["End-users & investors", "Limited inventory", "Strong micro-market fundamentals"],
+      color: "from-emerald-600 to-teal-600",
+    },
   ];
 
   const companyStats = [
-    { label: "Years of Excellence", value: "11+", icon: Star },
-    { label: "Happy Families", value: "1000+", icon: Users2 },
-    { label: "Transparent Deals", value: "100%", icon: ShieldCheck },
+    { label: "Configurations", value: "3 & 4 BHK", icon: Star },
+    { label: "Lifestyle Add-ons", value: "Study + Servant", icon: Users2 },
+    { label: "Spaces", value: "Basement + Terrace", icon: ShieldCheck },
   ];
 
   return (
@@ -56,7 +59,7 @@ const Services = () => {
 
       <div className="container mx-auto px-6 relative z-10">
 
-        {/* 1. Header Section with T and T Branding */}
+        {/* 1. Header Section - Project Highlights */}
         <div className="flex flex-col lg:flex-row items-end justify-between gap-8 mb-20">
           <div className="max-w-2xl text-left">
             <motion.div
@@ -64,13 +67,14 @@ const Services = () => {
               whileInView={{ opacity: 1, x: 0 }}
               className="flex items-center gap-2 text-yellow-600 font-bold tracking-widest uppercase text-xs mb-4"
             >
-              <span className="w-8 h-[2px] bg-yellow-500" /> Professional Realty Services
+              <span className="w-8 h-[2px] bg-yellow-500" /> Orchid IVY · Sector 51, Gurugram
             </motion.div>
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.1]">
-              Expertise by <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-500">T and T Realty</span>
+              Discover a New Way of Living
             </h2>
             <p className="mt-6 text-gray-500 text-lg font-medium leading-relaxed">
-              Founded on the pillars of **Trust & Transparency**, we don't just sell properties; we build long-term wealth portfolios for our clients since 2014.
+              Fully developed habitat · Premium independent floors · Thoughtfully planned 3 &amp; 4 BHK + Study layouts
+              designed for privacy, comfort and elevated everyday living.
             </p>
           </div>
           
@@ -123,7 +127,7 @@ const Services = () => {
           ))}
         </div>
 
-        {/* 3. The "T and T Advantage" Section (Company Showcase) */}
+        {/* 3. The "Orchid IVY Advantage" Section */}
         <motion.div 
           className="bg-white border border-gray-100 rounded-[3rem] p-8 md:p-16 shadow-sm mb-24 overflow-hidden relative"
           initial={{ opacity: 0 }}
@@ -135,12 +139,18 @@ const Services = () => {
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-3xl font-bold text-slate-900 mb-6">The T and T Realty Advantage</h3>
+              <h3 className="text-3xl font-bold text-slate-900 mb-6">Why Families Prefer Orchid IVY</h3>
               <p className="text-gray-500 mb-8 leading-relaxed">
-                Our name stands for <strong>Trust & Transparency</strong>. We specialize in end-to-end solutions, from land acquisition to project planning for B2B clients, and portfolio management for individual investors.
+                Orchid IVY is crafted for discerning buyers who want the feel of a villa with the convenience of
+                independent floors, in a location that is already thriving.
               </p>
               <ul className="grid sm:grid-cols-2 gap-4">
-                {["In-depth Market Research", "Clear Legal Documentation", "Proven Track Record", "Bespoke Solutions"].map((item, i) => (
+                {[
+                  "Fully developed sector with strong social infrastructure",
+                  "Spacious layouts with excellent natural light & ventilation",
+                  "Exclusive basement & terrace for lifestyle customisation",
+                  "Excellent end-use & rental demand in core Gurugram",
+                ].map((item, i) => (
                   <li key={i} className="flex items-center gap-2 text-sm font-bold text-slate-800">
                     <div className="w-2 h-2 rounded-full bg-yellow-500" /> {item}
                   </li>
@@ -148,21 +158,26 @@ const Services = () => {
               </ul>
             </div>
             <div className="bg-slate-50 p-8 rounded-[2rem] border border-gray-100">
-               <div className="italic text-lg text-slate-600 mb-6">
-                 "Our thrust lies in providing market insights and financing options that make ownership a seamless journey for every client."
-               </div>
-               <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-yellow-500" />
-                  <div>
-                    <div className="font-bold text-slate-900">T and T Services</div>
-                    <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">Since 2014</div>
+              <div className="italic text-lg text-slate-600 mb-6">
+                "Premium independent floors in a fully developed Gurugram sector are limited – Orchid IVY offers a rare
+                blend of lifestyle, privacy and appreciation potential."
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-xs font-bold text-slate-900">
+                  LD
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900">Lavneet Dabast Dabbas</div>
+                  <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">
+                    Independent Real Estate Consultant
                   </div>
-               </div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
 
-        {/* 4. CTA Section - WhatsApp Link instead of scroll */}
+        {/* 4. CTA Section - WhatsApp Link */}
         <motion.div 
           className="rounded-[3rem] bg-slate-900 p-10 md:p-16 text-center relative overflow-hidden"
           whileInView={{ scale: [0.98, 1] }}
@@ -172,10 +187,11 @@ const Services = () => {
           <div className="relative z-10">
             <h3 className="text-3xl md:text-5xl font-black text-white mb-6">Experience Transparency Today</h3>
             <p className="text-gray-400 max-w-xl mx-auto mb-10 text-lg">
-              Whether it's Commercial, Residential, or Land, let Panipat's most trusted consultant guide you.
+              Book your site visit or request a callback to explore available 3 &amp; 4 BHK + Study independent floors at
+              Orchid IVY, Sector 51.
             </p>
             <a 
-              href="https://wa.me/91XXXXXXXXXX?text=Hi, I am interested in T and T Realty Services. Please contact me." 
+              href="https://wa.me/917035357070?text=Hi,%20I%20want%20to%20know%20more%20about%20Orchid%20IVY%20independent%20floors%20in%20Sector%2051.%20Please%20contact%20me." 
               className="inline-flex h-16 px-12 bg-yellow-500 text-slate-900 hover:bg-white font-black text-lg rounded-2xl shadow-xl transition-all items-center gap-3 mx-auto"
             >
               <MessageSquare size={22} /> Talk to an Expert <ArrowRight size={22} />

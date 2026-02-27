@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
-import tntLogo from '@/assets/logo1.png';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,9 +21,12 @@ const Header = () => {
       <header className="bg-black shadow-professional sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            {/* Logo */}
-            <div className="flex items-center">
-              <img src={tntLogo} alt="T&T Realty" className="h-14 w-auto" />
+            {/* Branding - No Logo, Name Only */}
+            <div className="flex flex-col">
+              <span className="text-white font-bold text-lg leading-tight">Lavneet Dabast Dabbas</span>
+              <span className="text-xs text-gray-300 uppercase tracking-[0.18em]">
+                Orchid IVY · Sector 51, Gurugram
+              </span>
             </div>
 
             {/* Desktop Navigation */}
@@ -72,12 +74,12 @@ const Header = () => {
   asChild
   className="bg-[#FCBD01] text-black transition-smooth hover:bg-[#FCBD01]"
 >
-  <a
-    href="tel:918750057070"
-    className="text-black no-underline hover:text-black visited:text-black"
-  >
-    Call Now
-  </a>
+            <a
+              href="tel:917035357070"
+              className="text-black no-underline hover:text-black visited:text-black"
+            >
+              Call Now
+            </a>
 </Button>
 
 
@@ -127,12 +129,12 @@ const Header = () => {
   asChild
   className="bg-[#FCBD01] text-black transition-smooth hover:bg-[#FCBD01] w-full"
 >
-  <a
-    href="tel:918750057070"
-    className="text-black no-underline hover:text-black visited:text-black"
-  >
-    Call Now
-  </a>
+            <a
+              href="tel:917035357070"
+              className="text-black no-underline hover:text-black visited:text-black"
+            >
+              Call Now
+            </a>
 </Button>
 
               </nav>

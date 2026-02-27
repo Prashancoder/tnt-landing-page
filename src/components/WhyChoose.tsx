@@ -10,19 +10,22 @@ import { motion } from "framer-motion";
 const whyChoose = [
   {
     icon: Compass,
-    title: "Expert Guidance",
-    description: "Navigate the complex real estate market with confidence using our data-driven insights and personalized professional advice."
+    title: "Premium Independent Floor Living",
+    description:
+      "Enjoy low-density, villa-like living with your own independent floor, basement and exclusive terrace space.",
   },
   {
     icon: Briefcase,
-    title: "Exclusive Portfolio Management",
-    description: "End-to-end management of your real estate assets, ensuring premium maintenance and optimized rental yields."
+    title: "Fully Developed Sector 51, Gurugram",
+    description:
+      "Live minutes from Medanta, Amity International School, Unitech Cyber Park and the upcoming Sector 40 metro station.",
   },
   {
     icon: TrendingUp,
-    title: "Short & Long Term Wealth Creation",
-    description: "Strategic investment planning designed to capture immediate market opportunities while securing sustainable long-term growth."
-  }
+    title: "Strong Rental & Appreciation Potential",
+    description:
+      "Sector 51 is a mature micro-market with solid capital appreciation trends, ideal for both end-users and investors.",
+  },
 ];
 
 const WhyChoose = () => {
@@ -36,7 +39,7 @@ const WhyChoose = () => {
       viewport={{ once: true }}
     >
       <h3 className="text-3xl font-bold text-center mb-12">
-        Why Choose <span className="bg-gradient-to-r from-yellow-500 to-secondary bg-clip-text text-transparent">T&T Realty?</span>
+        Why Choose <span className="bg-gradient-to-r from-yellow-500 to-secondary bg-clip-text text-transparent">Orchid IVY?</span>
       </h3>
       
       {/* Updated Grid: md:grid-cols-3 to center the 3 items perfectly */}
