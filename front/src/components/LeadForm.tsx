@@ -43,6 +43,8 @@ const LeadForm = ({
     message: "",
   });
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -50,6 +52,15 @@ const LeadForm = ({
       toast({
         title: "Required fields missing",
         description: "Please enter your name and phone number.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!API_URL) {
+      toast({
+        title: "Configuration error",
+        description: "API URL is not configured properly.",
         variant: "destructive",
       });
       return;
@@ -66,7 +77,7 @@ const LeadForm = ({
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/lead", {
+      const res = await fetch(`${API_URL}/api/lead`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +114,8 @@ const LeadForm = ({
 
       toast({
         title: "Submission failed",
-        description: "Please try again or call9971809303 directly.",
+        description:
+          "Please try again or call 9971809303 directly.",
         variant: "destructive",
       });
     } finally {
@@ -133,8 +145,6 @@ const LeadForm = ({
 
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-5">
-
-          {/* Name */}
           <div>
             <Label className="flex items-center gap-2 font-semibold">
               <User size={16} />
@@ -150,7 +160,6 @@ const LeadForm = ({
             />
           </div>
 
-          {/* Phone */}
           <div>
             <Label className="flex items-center gap-2 font-semibold">
               <Phone size={16} />
@@ -166,7 +175,6 @@ const LeadForm = ({
             />
           </div>
 
-          {/* Email */}
           <div>
             <Label className="flex items-center gap-2 font-semibold">
               <Mail size={16} />
@@ -176,12 +184,11 @@ const LeadForm = ({
               type="email"
               value={formData.email}
               onChange={(e) => handleChange("email", e.target.value)}
-              placeholder="lavneetdabbas27@gmail.com"
+              placeholder="example@email.com"
               className="mt-2 rounded-lg"
             />
           </div>
 
-          {/* Message */}
           <div>
             <Label className="flex items-center gap-2 font-semibold">
               <MessageSquare size={16} />
@@ -203,7 +210,6 @@ const LeadForm = ({
           >
             {isSubmitting ? "Submitting..." : "✨ Request Callback"}
           </Button>
-
         </form>
       </CardContent>
     </Card>
@@ -224,9 +230,7 @@ const LeadForm = ({
           </p>
         </div>
 
-        <div className="max-w-md mx-auto">
-          {FormCard}
-        </div>
+        <div className="max-w-md mx-auto">{FormCard}</div>
       </div>
     </section>
   );
